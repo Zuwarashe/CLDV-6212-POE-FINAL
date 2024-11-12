@@ -1,0 +1,131 @@
+﻿@model CustomerProfile
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Container for centering and spacing -->
+<div class="container">
+    <div class="form-section">
+        <h2>Add Customer Profile</h2>
+        <!-- First Form for Customer Profile -->
+        <form asp-action="StoreTableInfo" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="FirstName" required />
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="LastName" required />
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="text" id="phone-number" name="PhoneNumber" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Add Profile</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-section">
+        <h2>Upload Files</h2>
+        <!-- Second Form for File Uploads -->
+        <form asp-action="UploadFile" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="contract-file">Upload Contract</label>
+                <input type="file" id="contract-file" name="contractFile" />
+                <button type="submit" class="btn-submit">Submit Contract</button>
+            </div>
+        </form>
+
+        <form asp-action="UploadBlob" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image-file">Upload Image</label>
+                <input type="file" id="image-file" name="imageFile" />
+                <button type="submit" class="btn-submit">Submit Image</button>
+            </div>
+        </form>
+
+        <form asp-action="ProcessQueueMessage" method="post">
+            <div class="form-group">
+                <input type="text" id="order-id" name="orderId" placeholder="Order ID" required />
+                <button type="submit" class="btn-submit">Process Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Styles for minimalistic design -->
+<style>
+    /* General container for centering content */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-section {
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: #f8f8f8;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* Form inputs and buttons styling */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+        color: #444;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    .btn-submit {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-submit:hover {
+        background-color: #0056b3;
+    }
+</style>
